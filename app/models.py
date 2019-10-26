@@ -19,5 +19,21 @@ class Profile(models.model):
     def delete_profile(self):
         self.delete()
 
-    def update_bio(self,bio):
+    def update_bio(self, bio):
+        self.bio = bio
+        self.save()
+
+class Project(models.Model):
+    title = models.CharField(max_length=300)
+    details = models.TextField()
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.title
+
+    def save_title(self):
+        self.save()
+
+    def delete_title(self, title):
+        self.title = title
         self.save()
