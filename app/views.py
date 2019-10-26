@@ -65,6 +65,16 @@ def upload(request):
     return render(request, '/upload.html', {'post': post, 'form':form})
 
 
+def home(request):
+    current_user = request.user
+    project_images = Project.fetch_all_images()
+    image_params = {
+        'all_images': project_images,
+        'current_user': current_user,
+    }
+    return render(request, "/index.html", image_params)
+
+
 
 
 
