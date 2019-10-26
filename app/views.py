@@ -32,3 +32,29 @@ def signup(request):
             }
         return redirect(request, 'registration/signup.html', {'form': form})
 
+
+@login_required(login_url='login')
+def profile(request, username):
+    return render(request, 'profile/profile.html')
+
+
+@login_required(login_url='login')
+def edit_profile(request, username):
+    user = User.objects.get(username=username)
+    if request.method == 'POST':
+        user_form = UpdateUserForm(request.POST)
+        profile_form = UpdateUserProfileForm(request.POST)
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            return redirect('profile', user.username)
+    else:
+        user_form = UpdateUserForm()
+        profile_form = UpdateUserProfileForm()
+    return render(request, 'main/edit.html')
+
+
+
+
+
+
