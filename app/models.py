@@ -49,3 +49,16 @@ class Project(models.Model):
     def search_project_by_title(cls, search_term):
         project = cls.objects.filter(title__icontains=search_term)
         return project
+
+
+class Comments(models.Model):
+    comment = models.TextField(max_length=300)
+
+    def __str__(self):
+        return self.comment()
+
+    def save_comment(self):
+        self.save()
+
+    def delete_comment(self):
+        self.delete()
