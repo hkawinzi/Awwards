@@ -3,9 +3,9 @@ virtual
 .vscode
 /__pycache__
 .env
-myapp/__pycache__/
+app/__pycache__/
 awwards/__pycache__/
-myapp/migrations/__pycache__/
+app/migrations/__pycache__/
 awwards/__pycache__
 media
 
