@@ -15,6 +15,7 @@ This is an appliation that allows the user to post their post ie a blog and thei
 <li> create new file `requirements.txt` and run `pip freeze > requirements.txt`</li>
 <li> run `python3.6 manage.py runserver `</li>
 <li> for quick debugging run `python manage.py check`</li>
+
 ### link to license
 MIT LICENSE [2019]
 
@@ -26,8 +27,8 @@ MIT LICENSE [2019]
 <li> Django</li>
 <li> PostgreSQL Database</li>
 <li> CSS</li>
-
-
+  
+  
 # user story
 <ul>
 <li>view posted projects and their details</li>
