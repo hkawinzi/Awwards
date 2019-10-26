@@ -4,6 +4,8 @@
       <w>beautifulsoup</w>
       <w>chardet</w>
       <w>heroku</w>
+      <w>tinymce</w>
+      <w>whitenoise</w>
     </words>
   </dictionary>
 </component>
