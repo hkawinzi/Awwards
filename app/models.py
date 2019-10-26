@@ -23,10 +23,12 @@ class Profile(models.model):
         self.bio = bio
         self.save()
 
+
 class Project(models.Model):
     title = models.CharField(max_length=300)
     details = models.TextField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='image/', blank=True)
 
     def __str__(self):
         return self.title
@@ -37,3 +39,13 @@ class Project(models.Model):
     def delete_title(self, title):
         self.title = title
         self.save()
+
+    @classmethod
+    def fetch_all_images(cls):
+        all_images = Project.objects.all()
+        return all_images
+
+    @classmethod
+    def search_project_by_title(cls, search_term):
+        project = cls.objects.filter(title__icontains=search_term)
+        return project
