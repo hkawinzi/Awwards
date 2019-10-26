@@ -25,3 +25,10 @@ def signup(request):
             user = authenticate(username=username, password=raw_password)
             login(request, user)
             return redirect('/')
+        else:
+            form = SignupForm()
+            register_form = {
+                'form': form,
+            }
+        return redirect(request, 'registration/signup.html', {'form': form})
+
