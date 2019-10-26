@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import MinValueValidator, MaxValueValidator
 from django.contrib.auth.models import User
 
 
@@ -61,4 +62,19 @@ class Comment(models.Model):
         self.save()
 
     def delete_comment(self):
+        self.delete()
+
+
+class Rate(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE())
+    post = models.ForeignKey(Project, on_delete=models.PROTECT, related_name='likes', null=True)
+    design = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(10)])
+    usability = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(10)], null=True)
+    creativity = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(10)])
+    content = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(10)])
+
+    def save_rate(self):
+        self.save()
+
+    def delete_rate(self):
         self.delete()
