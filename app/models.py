@@ -51,7 +51,7 @@ class Project(models.Model):
         return project
 
 
-class Comments(models.Model):
+class Comment(models.Model):
     comment = models.TextField(max_length=300)
 
     def __str__(self):
