@@ -3,11 +3,11 @@ from django.contrib.auth.models import User
 
 
 # Create your models here
-class Profile(models.model):
+class Profile(models.Model):
     user = models.OneToOneField(User)
     image = models.ImageField(upload_to='picture/', blank=True)
     bio = models.TextField(default='')
-    posted_project = models.ForeignKey('Project', on_delete=models.CASCADE)
+    posted_project = models.ForeignKey('Project', on_delete=models.CASCADE, null=True)
     contact_info = models.CharField(max_length=300, blank=True)
 
     def __str__(self):

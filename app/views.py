@@ -13,7 +13,7 @@ def index(request):
             post.save()
     else:
         form = PostForm()
-    return render(request, 'main/index.html', {'posts': post, 'form': form})
+    return render(request, '/index.html', {'posts': post, 'form': form})
 
 def signup(request):
     if request.method == 'POST':
@@ -52,6 +52,17 @@ def edit_profile(request, username):
         user_form = UpdateUserForm()
         profile_form = UpdateUserProfileForm()
     return render(request, 'main/edit.html')
+
+def upload(request):
+    if request.method == "POST":
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = form.save()
+            post.user = request.user
+            post.save()
+    else:
+        form = PostForm()
+    return render(request, '/upload.html', {'post': post, 'form':form})
 
 
 
