@@ -53,6 +53,16 @@ def edit_profile(request, username):
         profile_form = UpdateUserProfileForm()
     return render(request, 'main/edit.html')
 
+
+def profile_view(request):
+    profile = Profile.get_profile_data()
+    profile_data = {
+        'profile': profile
+    }
+
+    return render('profile/profile.html', profile_data)
+
+
 def upload(request):
     if request.method == "POST":
         form = PostForm(request.POST)
@@ -62,7 +72,7 @@ def upload(request):
             post.save()
     else:
         form = PostForm()
-    return render(request, '/upload.html', {'post': post, 'form':form})
+    return render(request, '/upload.html', {'post': post, 'form': form})
 
 
 def home(request):
@@ -81,10 +91,7 @@ def rate(request):
         'ratings': ratings
     }
 
-    return render('main/view_project.html', rate_params)
-
-
-
+    return render('view_project.html', rate_params)
 
 
 
