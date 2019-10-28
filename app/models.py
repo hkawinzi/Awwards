@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 
 # Create your models here
 class Profile(models.Model):
-    user = models.OneToOneField(User)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='picture/', blank=True)
     bio = models.TextField(default='')
     posted_project = models.ForeignKey('Project', on_delete=models.CASCADE, null=True)
@@ -66,7 +66,7 @@ class Comment(models.Model):
 
 
 class Rate(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE())
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     post = models.ForeignKey(Project, on_delete=models.PROTECT, related_name='likes', null=True)
     design = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(10)])
     usability = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(10)], null=True)

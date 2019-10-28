@@ -6,7 +6,6 @@ from .views import home, signup, profile, edit_profile, upload, index
 
 urlpatterns = [
     path('', home, name='home'),
-    path('project/<post>', project_view, name='project'),
     path('signup/', signup, name='signup'),
     path('upload/', upload, name='upload'),
     path('profile/<username>/', profile, name='profile'),
