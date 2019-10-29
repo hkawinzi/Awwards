@@ -4,32 +4,11 @@ from django.contrib.auth.models import User
 
 
 # Create your models here
-class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='picture/', blank=True)
-    bio = models.TextField(default='')
-    posted_project = models.ForeignKey('Project', on_delete=models.CASCADE, null=True)
-    contact_info = models.CharField(max_length=300, blank=True)
-
-    def __str__(self):
-        return self.bio
-
-    def save_profile(self):
-        self.save()
-
-    def delete_profile(self):
-        self.delete()
-
-    def update_bio(self, bio):
-        self.bio = bio
-        self.save()
-
-
 class Project(models.Model):
     title = models.CharField(max_length=300)
     details = models.TextField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='image/', blank=True)
+    image = models.ImageField(upload_to='images/', blank=True)
 
     def __str__(self):
         return self.title
@@ -50,6 +29,27 @@ class Project(models.Model):
     def search_project_by_title(cls, search_term):
         project = cls.objects.filter(title__icontains=search_term)
         return project
+
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='picture/', blank=True)
+    bio = models.TextField(default='')
+    posted_project = models.ForeignKey(Project, on_delete=models.CASCADE, null=True)
+    contact_info = models.CharField(max_length=300, blank=True)
+
+    def __str__(self):
+        return self.bio
+
+    def save_profile(self):
+        self.save()
+
+    def delete_profile(self):
+        self.delete()
+
+    def update_bio(self, bio):
+        self.bio = bio
+        self.save()
 
 
 class Comment(models.Model):

@@ -1,27 +1,20 @@
 {% extends 'base.html'%}
 {% block content %}
-{% load static%}
+{% load static %}
 <body class="home" >
 <div class="wrapper ">
     <section id="content">
         <div class="content-view">
             <div class="box-site-head js-single-element">
-                        <img src="https://images.unsplash.com/photo-1517486430290-35657bdcef51?ixlib=rb-1.2.1&auto=format&fit=crop&w=1510&q=80"
-                             data-src="https://images.unsplash.com/photo-1517486430290-35657bdcef51?ixlib=rb-1.2.1&auto=format&fit=crop&w=1510&q=80"
-                             alt="Laguta &amp; Laguta" width="1900" height="200" class="lazy"/>
                     </a>
-                </div>
+            </div>
                 <div class="box-photo has-mobile">
                     <a href="/">
-                        <img src="https://images.unsplash.com/photo-1517486430290-35657bdcef51?ixlib=rb-1.2.1&auto=format&fit=crop&w=1510&q=80"
-                             data-srcset="https://images.unsplash.com/photo-1517486430290-35657bdcef51?ixlib=rb-1.2.1&auto=format&fit=crop&w=1510&q=80"
+                        <img width="1500px" height="800px"
+                                src="data:"
+                                srcset="https://images.unsplash.com/photo-1559736139-6531cc82432e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3151&q=80"
                              alt="Laguta &amp; Laguta" class="lazy"/>
-                        <div class="ribbon">
-                            <img width="90" height="151"
-                                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAACXAQMAAACvEN4rAAAAA1BMVEUAAACnej3aAAAAAXRSTlMAQObYZgAAABZJREFUOMtjGAWjYBSMglEwCkbBYAYAB6sAAfz0o9UAAAAASUVORK5CYII="
-                                 srcset="https://assets.awwwards.com/assets/images/ribbons/sotd_white_left.png 1x, https://assets.awwwards.com/assets/images/ribbons/sotd_white_left@2x.png 2x"
-                                 alt="Site of the Day"/>
-                        </div>
+
                     </a>
                 </div>
                 <div class="box-content">
@@ -161,7 +154,7 @@
                                         </div>
 
                                         <div class="hover-item center">
-                                            <a href="{% url 'project' image.title %}"
+                                            <a href=""
                                                class="bt-default white-fill large vote-now">VOTE
                                                 NOW</a>
                                         </div>

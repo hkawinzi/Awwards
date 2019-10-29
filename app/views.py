@@ -1,10 +1,13 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
-from .forms import *
+from .models import *
+from .models import Project
+
 
 # Create your views here.
 def index(request):
+
     if request.method == "POST":
         form = PostForm(request.POST)
         if form.is_valid():
@@ -14,6 +17,7 @@ def index(request):
     else:
         form = PostForm()
     return render(request, '/index.html', {'posts': post, 'form': form})
+
 
 def signup(request):
     if request.method == 'POST':
@@ -76,13 +80,14 @@ def upload(request):
 
 
 def home(request):
+
     current_user = request.user
     project_images = Project.fetch_all_images()
     image_params = {
         'all_images': project_images,
         'current_user': current_user,
     }
-    return render(request, "/index.html", image_params)
+    return render(request, 'index.html', image_params)
 
 
 def rate(request):
