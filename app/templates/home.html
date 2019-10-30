@@ -1,14 +1,27 @@
 {% extends 'base.html'%} {% block content %}
 <section class="main-banner" id="home">
-    <div class="banner banner0">
-        <div class="slogan">
-            <h4 id="heading"><a href="https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwjOu_LMob7lAhVkA2MBHSvnAEcQjRx6BAgBEAQ&url=https%3A%2F%2Fwww.vectorstock.com%2Froyalty-free-vector%2Faward-gold-star-and-laurel-competition-banner-vector-20010004&psig=AOvVaw3ghdyONIV8ZVuW5M9cOJfM&ust=1572328310790200">Awwards</a></h4>
-<!--                <div class="rotate">-->
-<!--                    <a href="#about" class="scroll">-->
+    <div class="container">
+        <div class="banner banner0">
+            <div class="slogan">
+                <h4 id="heading"><a
+                        href="https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwjOu_LMob7lAhVkA2MBHSvnAEcQjRx6BAgBEAQ&url=https%3A%2F%2Fwww.vectorstock.com%2Froyalty-free-vector%2Faward-gold-star-and-laurel-competition-banner-vector-20010004&psig=AOvVaw3ghdyONIV8ZVuW5M9cOJfM&ust=1572328310790200">Awwards</a>
+                </h4>
+                <!--                <div class="rotate">-->
+                <!--                    <a href="#about" class="scroll">-->
 
-<!--                        <span class="fa fa-long-arrow-down">-->
-<!--</span> </a>-->
-<!--                </div>-->
+                <!--                        <span class="fa fa-long-arrow-down">-->
+                <!--</span> </a>-->
+                <!--                </div>-->
+                <div class="banner-high-lights text-left">
+
+                    <div class="rotate">
+                        <a href="#about" class="scroll">
+
+                            <span class="fa fa-long-arrow-down"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -63,18 +76,20 @@
 
 
                         </div>
-                        <div class="username">
-                            <div class="prof-row">
-                                <img src="" alt="">
-                                <p>By {{user.user.name}} name</p>
-                            </div>
-                            <div class="tag-row">
-                                <p><span>html</span> <span>css</span></p>
+                        <div class="p-and-t-row">
+                            <div class="username">
+                                <div class="prof-row">
+                                    <img src="" alt="">
+                                    <p>By {{user.user.name}} name</p>
+                                </div>
+                                <div class="tag-row">
+                                    <p><span>html</span> <span>css</span></p>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    {% endfor %}
                 </div>
-                {% endfor %}
             </div>
         </div>
     </div>

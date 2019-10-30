@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% block content %}
-
 <div class="container">
     <div class="row">
         <div class="col-md-3"></div>
         <div class="col-md-6">
-            <a href="{% url 'signup' %}" <h2 class="text-info">Log in</a></span></h2>
+            <a href="{% url 'login' %}"></a>
+            <h2 class="text-info">Log in</h2>
             <form action="" method="post" novalidate>
                 {% csrf_token %}
                 {{ form|crispy }}

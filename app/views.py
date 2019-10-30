@@ -1,13 +1,12 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
-from .models import *
-from .models import Project
+
+from .forms import *
 
 
 # Create your views here.
 def index(request):
-
     if request.method == "POST":
         form = PostForm(request.POST)
         if form.is_valid():
@@ -16,25 +15,22 @@ def index(request):
             post.save()
     else:
         form = PostForm()
-    return render(request, '/index.html', {'posts': post, 'form': form})
+    return render(request, 'index.html', {'form': form})
 
 
-def signup(request):
-    if request.method == 'POST':
-        form = SignupForm(request.POST)
-        if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            raw_password = form.cleaned_data.get('password1')
-            user = authenticate(username=username, password=raw_password)
-            login(request, user)
-            return redirect('/')
-        else:
-            form = SignupForm()
-            register_form = {
-                'form': form,
-            }
-        return redirect(request, 'registration/signup.html', {'form': form})
+# def signup(request):
+#     if request.method == 'POST':
+#         form = SignupForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             username = form.cleaned_data.get('username')
+#             raw_password = form.cleaned_data.get('password1')
+#             user = authenticate(username=username, password=raw_password)
+#             login(request, user)
+#             return redirect('login')
+#     else:
+#         form = SignupForm()
+#     return render(request, 'registration/signup.html', {'form': form})
 
 
 @login_required(login_url='login')
@@ -55,7 +51,7 @@ def edit_profile(request, username):
     else:
         user_form = UpdateUserForm()
         profile_form = UpdateUserProfileForm()
-    return render(request, 'main/edit.html')
+    return render(request, 'edit.html')
 
 
 def profile_view(request):
@@ -76,18 +72,7 @@ def upload(request):
             post.save()
     else:
         form = PostForm()
-    return render(request, '/upload.html', {'post': post, 'form': form})
-
-
-def home(request):
-
-    current_user = request.user
-    project_images = Project.fetch_all_images()
-    image_params = {
-        'all_images': project_images,
-        'current_user': current_user,
-    }
-    return render(request, 'index.html', image_params)
+    return render(request, 'upload.html', {'form': form})
 
 
 def rate(request):
@@ -97,8 +82,3 @@ def rate(request):
     }
 
     return render('view_project.html', rate_params)
-
-
-
-
-
