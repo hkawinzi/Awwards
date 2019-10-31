@@ -82,3 +82,6 @@ def rate(request):
     }
 
     return render('view_project.html', rate_params)
+
+
+
